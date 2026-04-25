@@ -178,7 +178,7 @@ func EnsureWLCommons(townRoot string) error {
 		// In containerized Dolt the database lives inside the container, so the
 		// host-filesystem guard above misses it and InitRig issues CREATE DATABASE
 		// against a server that already has the DB. Treat this as a successful
-		// no-op: the schema was initialised by the first EnsureDB call.
+		// no-op: the schema was initialized by the first EnsureDB call.
 		if strings.Contains(err.Error(), "database exists") {
 			return nil
 		}
