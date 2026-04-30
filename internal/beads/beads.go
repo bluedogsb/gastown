@@ -407,9 +407,14 @@ func (b *Beads) forIssueID(id string) *Beads {
 	if resolved == "" || resolved == b.getResolvedBeadsDir() {
 		return b
 	}
-	clone := *b
-	clone.beadsDir = resolved
-	return &clone
+	return &Beads{
+		workDir:    b.workDir,
+		beadsDir:   resolved,
+		isolated:   b.isolated,
+		serverPort: b.serverPort,
+		store:      b.store,
+		townRoot:   b.townRoot,
+	}
 }
 
 // Init initializes a new beads database in the working directory.
